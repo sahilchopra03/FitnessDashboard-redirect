@@ -45,8 +45,10 @@
   </div>
 <script>
   var BASE_URL = "https://script.google.com/macros/s/AKfycbzoqVqhTs3-rSQdgnJRyKmbIeggNYxkoPUHEKaT-7KF7skrMcgLd-aRQzIbOJ02cejp/exec"; // EDIT ME
-  document.getElementById("coachBtn").href = BASE_URL + "?app=coach";
-  document.getElementById("clientBtn").href = BASE_URL + "?app=client";
+  var COACH_URL = BASE_URL + "?app=coach";
+  var CLIENT_URL = BASE_URL + "?app=client";
+  document.getElementById("coachBtn").href = COACH_URL;
+  document.getElementById("clientBtn").href = CLIENT_URL;
 </script>
 </body>
 </html>
