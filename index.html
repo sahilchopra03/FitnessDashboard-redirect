@@ -37,17 +37,16 @@
     <h2>Make Workout &amp; Diet Planning Easy</h2>
     <p class="home-subtitle">Who's logging in?</p>
     <div class="home-actions">
-      <!-- EDIT ME: update these two hrefs whenever the Apps Script deployment URL changes -->
-      <a class="btn-primary" id="coachBtn" href="https://script.google.com/macros/s/AKfycbzoqVqhTs3-rSQdgnJRyKmbIeggNYxkoPUHEKaT-7KF7skrMcgLd-aRQzIbOJ02cejp/exec?app=coach">COACH LOGIN</a>
-      <a class="btn-secondary" id="clientBtn" href="https://script.google.com/macros/s/AKfycbzoqVqhTs3-rSQdgnJRyKmbIeggNYxkoPUHEKaT-7KF7skrMcgLd-aRQzIbOJ02cejp/exec?app=client">CLIENT LOGIN</a>
+      <!-- EDIT ME: update BASE_URL in the script below whenever the Apps Script deployment URL changes -->
+      <a class="btn-primary" id="coachBtn" href="#">COACH LOGIN</a>
+      <a class="btn-secondary" id="clientBtn" href="#">CLIENT LOGIN</a>
     </div>
     <div style="height: 26px;"></div>
   </div>
 <script>
-  var COACH_URL = "https://script.google.com/macros/s/AKfycbzoqVqhTs3-rSQdgnJRyKmbIeggNYxkoPUHEKaT-7KF7skrMcgLd-aRQzIbOJ02cejp/exec?app=coach";   // EDIT ME
-  var CLIENT_URL = "https://script.google.com/macros/s/AKfycbzoqVqhTs3-rSQdgnJRyKmbIeggNYxkoPUHEKaT-7KF7skrMcgLd-aRQzIbOJ02cejp/exec?app=client"; // EDIT ME
-  document.getElementById("coachBtn").href = COACH_URL;
-  document.getElementById("clientBtn").href = CLIENT_URL;
+  var BASE_URL = "https://script.google.com/macros/s/AKfycbzoqVqhTs3-rSQdgnJRyKmbIeggNYxkoPUHEKaT-7KF7skrMcgLd-aRQzIbOJ02cejp/exec"; // EDIT ME
+  document.getElementById("coachBtn").href = BASE_URL + "?app=coach";
+  document.getElementById("clientBtn").href = BASE_URL + "?app=client";
 </script>
 </body>
 </html>
