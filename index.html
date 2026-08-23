@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FitnessDashboard</title>
+<!--
+  ============================================================
+  HOW TO UPDATE THE REDIRECT TARGET
+  ------------------------------------------------------------
+  Whenever your Google Apps Script deployment URL changes,
+  edit ONLY the two lines below (both marked EDIT ME) and
+  push to GitHub. This page's own URL never changes, so you
+  never have to re-share a new link with your users.
+  ============================================================
+-->
+<meta http-equiv="refresh" content="0; url=https://script.google.com/macros/s/DUMMY_DEPLOYMENT_ID/exec"> <!-- EDIT ME -->
+</head>
+<body>
+  <p>Redirecting to FitnessDashboard&hellip; if you are not redirected automatically,
+  <a id="fallback-link" href="#">click here</a>.</p>
+<script>
+  var TARGET_URL = "https://script.google.com/macros/s/DUMMY_DEPLOYMENT_ID/exec"; // EDIT ME
+  document.getElementById("fallback-link").href = TARGET_URL;
+  window.location.replace(TARGET_URL);
+</script>
+</body>
+</html>
