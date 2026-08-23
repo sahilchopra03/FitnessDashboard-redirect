@@ -69,16 +69,3 @@ tool on the whole file** — it will exceed context limits. Instead:
   copied once from `OldFitnessDashboardSonu/Code/Index.html` (the
   `coach-login-brand` img and the `<link rel="icon">` href) and should be left
   alone.
-
-## History / decisions worth knowing
-- Originally this page did an instant auto-redirect (meta refresh + JS) to a
-  single URL — later replaced with a branded button UI matching the source
-  app's login screen, then expanded to two buttons (coach/client) replicating
-  `Homepage.html` exactly, then refactored so only one `BASE_URL` needs
-  editing instead of two separate URLs.
-- Considered making the repo private, but GitHub Pages requires a paid plan
-  (Pro/Team/Enterprise) to build Pages from a private repo, and the published
-  Pages site is publicly viewable either way — so the repo is public.
-- Considered Cloudflare Pages for real no-cache HTTP headers (`_headers`
-  file); user decided the ~10-min GitHub Pages cache ceiling is acceptable and
-  chose to stay on GitHub Pages.
