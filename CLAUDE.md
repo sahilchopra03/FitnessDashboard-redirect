@@ -19,11 +19,15 @@ staying on GitHub Pages).
 
 ## What the page looks like
 An exact UI replica of `Homepage.html` from the
-`/Users/sahilchopra0003/Projects/OldFitnessDashboardSonu/Code/` Apps Script
-project (the "SS Command Center" fitness app): same logo, same heading
-("Make Workout & Diet Planning Easy"), same subtitle ("Who's logging in?"),
-and two buttons styled identically to the source project's `.btn-primary` /
-`.btn-secondary` — **COACH LOGIN** and **CLIENT LOGIN**.
+`/Users/sahilchopra0003/Projects/FitnessDashboard/V1/MasterDashboard/Code/`
+Apps Script project (the "SS Command Center" fitness app, V1): same logo,
+same tagline ("Make Workout & Diet Planning Easy"), same subtitle ("Who's
+logging in?"), and two role-picker cards (`.role-card.role-coach` /
+`.role-card.role-client`) with icon, label, description, and arrow — **Coach**
+and **Client** — that stack on mobile and sit side-by-side on desktop
+(≥1024px). If the source project's Homepage.html changes again, re-diff it
+against this file's `<style>`/body markup and port the changes over (the
+embedded logo/favicon base64 never needs to change).
 
 ## The only thing that ever needs editing
 `index.html` has one `BASE_URL` JS variable near the bottom of the file
