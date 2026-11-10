@@ -23,9 +23,20 @@ An exact copy of the V1 homepage (`Homepage.html` in
 Production serves it: the Phurtix logo, wordmark and tagline, light/dark theme,
 and the Coach / Client role cards. It is **generated**, never hand-edited:
 `build-from-v1.js` runs V1's real `doGet()` through that project's Node test
-world and writes `index.html` (adding the `<title>` and tab/home-screen icon that
-Apps Script sets on its outer page, and pointing the two role links at
-`BASE_URL`).
+world and writes `index.html` (adding the `<title>` Apps Script sets on its
+outer page, the icon tags, and pointing the two role links at `BASE_URL`) plus
+`manifest.webmanifest`.
+
+## Icons (favicon, bookmarks, iPhone + Android home screen)
+Real files in `icons/` — iOS ignores a `data:` home-screen icon and Android reads
+icons from the manifest. `make-icons.py` draws them with V1's own `dark_tile()`
+(`V1/MasterDashboard/Brand/rebuild-runner.py`), the recipe of Production's icon:
+`favicon-32.png` (tab + bookmarks), `apple-touch-icon.png` (180 px, iPhone/iPad
+home screen + Safari bookmarks — byte-identical to Production's icon),
+`icon-192/512.png` and `icon-maskable-512.png` (Android). The build refuses to run
+if `apple-touch-icon.png` no longer matches V1's icon; then re-run
+`python3 make-icons.py` (needs Pillow, numpy, scipy). Icon URLs carry a hash of
+the icon files (`?v=`), so a new drawing busts browsers' long favicon caches.
 
 ## Updating it
 Whenever the V1 homepage changes, or the Apps Script deployment URL changes
@@ -44,7 +55,7 @@ change:
 ```bash
 cd /Users/sahilchopra0003/Projects/FitnessDashboard-redirect
 node build-from-v1.js
-git add index.html build-from-v1.js
+git add -A
 git commit -m "Rebuild from the V1 homepage"
 git push
 ```
@@ -56,6 +67,6 @@ curl -s https://sahilchopra03.github.io/FitnessDashboard-redirect/ | grep -o 'hr
 (may take ~30-60s after push for Pages to rebuild; poll a few times).
 
 ## ⚠️ File size / do not full-Read
-`index.html` is ~200KB with long single-line base64 images (logo, icons). Don't
+`index.html` is ~130KB with long single-line base64 images (the logo). Don't
 `Read` it whole and don't edit it by hand — change V1 or `build-from-v1.js` and
 re-run the build.
