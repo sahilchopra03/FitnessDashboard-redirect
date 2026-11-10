@@ -38,6 +38,14 @@ if `apple-touch-icon.png` no longer matches V1's icon; then re-run
 `python3 make-icons.py` (needs Pillow, numpy, scipy). Icon URLs carry a hash of
 the icon files (`?v=`), so a new drawing busts browsers' long favicon caches.
 
+**The V1 app uses `icons/apple-touch-icon.png` too.** Apps Script can only set
+one icon (`setFaviconUrl` in V1 `doGet`), and Google ignores a `data:` URL, so V1's
+`BRAND_ICON_URL` (Utils.gs) is this file's GitHub Pages URL, with no `?v=`. It
+replaced a hand-uploaded Drive copy on 10 Nov 2026. **Never rename or move that
+file**, or V1's tab icon breaks. Pushing a new one changes V1's icon too, with no
+Apps Script release. The build checks both that the file matches V1's `touch` and
+that V1 points at it.
+
 ## Updating it
 Whenever the V1 homepage changes, or the Apps Script deployment URL changes
 (edit the `BASE_URL` constant at the top of `build-from-v1.js`):

@@ -28,11 +28,15 @@ const testUrl = W.run('ScriptApp.getService().getUrl()');
 let html = out.getContent();
 
 // Icons: real files (icons/, made by make-icons.py from the same brand drawing) — iOS ignores a data: URL home-screen
-// icon and Android reads its icons from the manifest. The 180 px one must be the very icon Production sets.
+// icon and Android reads its icons from the manifest. icons/apple-touch-icon.png is ALSO the V1 app's own tab icon:
+// doGet's setFaviconUrl(BRAND_ICON_URL) points here. So it must be byte-identical to V1's "touch", and V1 must point here.
+const PAGES_URL = 'https://sahilchopra03.github.io/FitnessDashboard-redirect/';
 const icons = path.join(__dirname, 'icons');
-const prodIcon = String(out._favicon || '').replace(/^data:image\/png;base64,/, '');
-if (!prodIcon || fs.readFileSync(path.join(icons, 'apple-touch-icon.png')).toString('base64') !== prodIcon)
-  throw new Error('icons/ no longer match the V1 brand icon — run `python3 make-icons.py` first.');
+const touch = String(W.run('brandAsset_("touch")')).replace(/^data:image\/png;base64,/, '');
+if (fs.readFileSync(path.join(icons, 'apple-touch-icon.png')).toString('base64') !== touch)
+  throw new Error('icons/ no longer match the V1 brand icon ("touch") — run `python3 make-icons.py` first.');
+if (out._favicon !== PAGES_URL + 'icons/apple-touch-icon.png')
+  throw new Error('V1 BRAND_ICON_URL is ' + out._favicon + ' — expected this page\'s icons/apple-touch-icon.png.');
 const css = fs.readFileSync(path.join(v1, 'Code', 'SharedStyles.html'), 'utf8');
 const hex = token => '#' + css.match(new RegExp('\\n\\s*' + token + '-rgb:\\s*([\\d,\\s]+);'))[1].split(',').map(v => (+v).toString(16).padStart(2, '0')).join('');
 const dark = hex('--ss-green-deep');
